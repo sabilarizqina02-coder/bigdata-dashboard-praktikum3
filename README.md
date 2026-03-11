@@ -1,158 +1,127 @@
 
+---
 
-# README.md
+# 📊 Praktikum Big Data
 
-```markdown
-# Big Data Technology Practicum 02
-## Batch Data Ingestion & Processing with Apache Spark
+## Batch Analytics + Visualization Layer (Big Data Dashboard)
 
-Praktikum ini bertujuan untuk mengimplementasikan pipeline pemrosesan data batch menggunakan Apache Spark. Pipeline ini melakukan proses ingestion, cleaning, transformasi, dan analisis data e-commerce.
-
-Melalui praktikum ini mahasiswa memahami konsep dasar data engineering seperti batch processing, data cleaning, agregasi data, serta penyimpanan data menggunakan format yang lebih efisien.
+| Keterangan         | Informasi            |
+| ------------------ | -------------------- |
+| **Nama**           | Sabila Rizqina Majid |
+| **NIM**            | 230104040058         |
+| **Mata Kuliah**    | Teknologi Big Data   |
+| **Dosen Pengampu** | Bapak Muhayat, M.IT  |
 
 ---
 
-# Dataset
+# 📌 Deskripsi Project
 
-Dataset yang digunakan adalah dataset transaksi e-commerce yang tersimpan dalam format CSV.
+Project ini merupakan implementasi **Batch Data Analytics dan Visualization Layer** dalam arsitektur **Big Data Pipeline**.
 
-Lokasi dataset:
+Dataset e-commerce diproses menggunakan **Apache Spark (PySpark)** untuk menghasilkan dataset analitik yang kemudian digunakan sebagai sumber data untuk membuat dashboard menggunakan **Power BI**.
 
-data/raw/ecommerce_raw.csv
-
-Dataset ini berisi informasi transaksi seperti:
-
-- Product
-- Category
-- Quantity
-- Price
-- Timestamp
+Praktikum ini bertujuan untuk memahami bagaimana proses **pengolahan data hingga visualisasi data** dilakukan dalam sistem Big Data.
 
 ---
 
-# Struktur Folder Project
+# 🏗 Big Data Pipeline
 
-Struktur folder project yang digunakan adalah sebagai berikut:
+Pipeline data pada project ini adalah sebagai berikut:
 
 ```
+Raw Dataset → Spark Processing → Analytics Layer → Serving Dataset → Power BI Dashboard
+```
 
-bigdata-project/
+Penjelasan pipeline:
+
+1. **Data Source**
+   Dataset e-commerce dalam format CSV digunakan sebagai sumber data mentah.
+
+2. **Processing Layer**
+   Data diproses menggunakan **Apache Spark (PySpark)** untuk melakukan:
+
+   * data cleaning
+   * data transformation
+   * aggregation
+
+3. **Analytics Layer**
+   Data dianalisis untuk menghasilkan metrik seperti total revenue dan kategori produk.
+
+4. **Serving Layer**
+   Dataset hasil analisis disimpan pada folder:
+
+```
+data/serving
+```
+
+5. **Visualization Layer**
+   Dataset digunakan untuk membuat dashboard menggunakan **Power BI Desktop**.
+
+---
+
+# 📂 Struktur Project
+
+```
+big-data-dashboard
 │
-├── data/
-│   ├── raw/
-│   │   └── ecommerce_raw.csv
-│   │
-│   ├── clean/
-│   │   ├── parquet/
-│   │   └── partitioned_by_category/
-│   │
-│   └── curated/
-│       ├── avg_transaction/
-│       ├── category_revenue/
-│       └── top_products/
+├── data
+│   └── serving
 │
-├── logs/
-│   └── batch_pipeline.log
+├── scripts
+│   └── analytics_layer.py
 │
-├── scripts/
-│   └── batch_pipeline_enterprise.py
+├── dashboard
+│   └── bigdata_dashboard.pbix
 │
 └── README.md
-
 ```
+
+Penjelasan folder:
+
+* **data/** → menyimpan dataset project
+* **scripts/** → script PySpark untuk analisis data
+* **dashboard/** → file dashboard Power BI
+* **README.md** → dokumentasi project
 
 ---
 
-# Teknologi yang Digunakan
+# ⚙️ Cara Menjalankan Program
 
-Teknologi yang digunakan dalam praktikum ini antara lain:
+Untuk menjalankan proses analisis data gunakan perintah berikut:
 
-- Python
-- Apache Spark (PySpark)
-- Linux Environment (WSL)
-- VS Code
-- Parquet File Format
+```
+python scripts/analytics_layer.py
+```
+
+Script ini akan memproses dataset menggunakan **PySpark** dan menghasilkan dataset analitik yang disimpan pada folder **data/serving**.
 
 ---
 
-# Setup Environment
+# 📊 Dashboard
 
-Aktifkan virtual environment terlebih dahulu sebelum menjalankan pipeline:
+Dataset yang telah diproses kemudian digunakan untuk membuat dashboard analitik menggunakan **Power BI**.
 
-```
-
-source venv/bin/activate
+File dashboard disimpan dalam format:
 
 ```
+bigdata_dashboard.pbix
+```
+
+Dashboard ini menampilkan informasi seperti:
+
+* Total Revenue
+* Top Product
+* Revenue Category
 
 ---
 
-# Menjalankan Pipeline
+# 🛠 Teknologi yang Digunakan
 
-Untuk menjalankan pipeline data processing gunakan perintah berikut:
+Project ini menggunakan beberapa teknologi berikut:
 
-```
-
-python scripts/batch_pipeline_enterprise.py
-
-```
-
-Pipeline akan melakukan beberapa tahapan:
-
-1. Inisialisasi Spark Session
-2. Load dataset dari CSV
-3. Data cleaning
-4. Transformasi data
-5. Perhitungan business metrics
-6. Menyimpan hasil ke format Parquet
+* **Apache Spark (PySpark)**
+* **Python**
+* **Power BI Desktop**
+* **GitHub**
 
 ---
-
-# Output Pipeline
-
-Pipeline akan menghasilkan beberapa output analisis:
-
-### 1. Total Raw Records
-Menampilkan jumlah data mentah yang dimuat dari dataset.
-
-### 2. Total Cleaned Records
-Menampilkan jumlah data setelah proses pembersihan.
-
-### 3. Top 5 Products
-Menampilkan 5 produk dengan jumlah penjualan tertinggi.
-
-### 4. Category Revenue
-Menampilkan total pendapatan berdasarkan kategori produk.
-
-### 5. Clean Data (Parquet)
-Data yang telah dibersihkan disimpan dalam format Parquet agar lebih efisien.
-
----
-
-# Hasil Eksekusi
-
-Jika pipeline berhasil dijalankan maka terminal akan menampilkan:
-
-```
-
-PIPELINE COMPLETED SUCCESSFULLY
-
-```
-
-Selain itu juga akan ditampilkan waktu eksekusi pipeline.
-
----
-
-# Kesimpulan
-
-Dari praktikum ini dapat dipahami proses dasar dalam data engineering menggunakan Apache Spark. Pipeline yang dibuat mampu melakukan ingestion, pembersihan data, transformasi, serta analisis data secara efisien menggunakan format penyimpanan Parquet.
-
----
-
-# Author
-
-Nama: Sabila Rizqina Majid  
-Program Studi: Teknologi Informasi  
-Universitas: UIN Antasari
-```
-
