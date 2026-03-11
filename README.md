@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ---
 
@@ -125,3 +126,7 @@ Project ini menggunakan beberapa teknologi berikut:
 * **GitHub**
 
 ---
+=======
+# bigdata-dashboard-praktikum3
+Praktikum 3 Teknologi Big Data
+>>>>>>> fda881b4bceb7bc6a41aa1efe43f22da9271d261
